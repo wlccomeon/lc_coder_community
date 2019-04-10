@@ -7,6 +7,10 @@
     <groupId>com.lc.coder.community</groupId>
     <artifactId>coder_community</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>cc_common</module>
+        <module>cc_base</module>
+    </modules>
     <packaging>pom</packaging>
     <description>lc的程序员社区-父工程</description>
 

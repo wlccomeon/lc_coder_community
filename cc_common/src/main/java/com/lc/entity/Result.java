@@ -8,7 +8,7 @@ public class Result {
 	/**成功状态标识*/
 	private boolean flag;
 	/**状态吗*/
-	private String code;
+	private int code;
 	/**返回页面的消息*/
 	private String message;
 	/**返回页面的数据*/
@@ -17,14 +17,14 @@ public class Result {
 	public Result() {
 	}
 
-	public Result(boolean flag, String code, String message, Object data) {
+	public Result(boolean flag, int code, String message, Object data) {
 		this.flag = flag;
 		this.code = code;
 		this.message = message;
 		this.data = data;
 	}
 
-	public Result(boolean flag, String code, String message) {
+	public Result(boolean flag, int code, String message) {
 		this.flag = flag;
 		this.code = code;
 		this.message = message;
@@ -38,11 +38,11 @@ public class Result {
 		this.flag = flag;
 	}
 
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(int code) {
 		this.code = code;
 	}
 
