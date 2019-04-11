@@ -64,6 +64,11 @@ public class LabelController {
 		return new Result(true,StatusCode.OK,"更新成功");
 	}
 
+	/**
+	 * 根据id删除
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
 	public Result delById(@PathVariable String id){
 		labelService.deleteById(id);
