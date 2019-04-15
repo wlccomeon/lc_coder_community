@@ -30,6 +30,48 @@ public class Result {
 		this.message = message;
 	}
 
+	public Result(boolean flag, int code) {
+		this.flag = flag;
+		this.code = code;
+	}
+
+	/**
+	 * 默认操作成功，不带message
+	 * @return
+	 */
+	public static Result createBySuccess(){
+		return new Result(true,StatusCode.OK);
+	}
+
+	/**
+	 * 操作成功，带自定义message
+	 * @param msg
+	 * @return
+	 */
+	public static Result createBySuccessMsg(String msg){
+		return new Result(true,StatusCode.OK,msg);
+	}
+
+	/**
+	 * 操作成功，带自定义message和返回的数据
+	 * @param msg
+	 * @param data
+	 * @return
+	 */
+	public static Result createBySuccess(String msg,Object data){
+		return new Result(true,StatusCode.OK,msg,data);
+	}
+
+	/**
+	 * 操作成功，带返回的数据
+	 * @param data
+	 * @return
+	 */
+	public static Result createBySuccess(Object data){
+		return new Result(true,StatusCode.OK,"操作成功",data);
+	}
+
+
 	public boolean isFlag() {
 		return flag;
 	}
