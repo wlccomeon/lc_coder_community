@@ -2,15 +2,19 @@ package com.lc.cc.base.controller;
 
 import com.lc.cc.base.entity.Label;
 import com.lc.cc.base.service.LabelService;
+import com.lc.entity.PageResult;
 import com.lc.entity.Result;
 import com.lc.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 
 /**
  * 标签Controller，测试
- * @crossOrigin：允许跨域访问
+ * @CrossOrigin：允许跨域访问
  * @author wlc
  */
 @RestController
@@ -27,7 +31,7 @@ public class LabelController {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public Result findAll(){
-		return new Result(true, StatusCode.OK,"查询成功",labelService.findAll());
+		return Result.createBySuccess("查询成功",labelService.findAll());
 	}
 
 	/**
@@ -37,7 +41,7 @@ public class LabelController {
 	 */
 	@RequestMapping(value = "/{id}",method = RequestMethod.GET)
 	public Result findById(@PathVariable String id){
-		return new Result(true,StatusCode.OK,"查询成功",labelService.findById(id));
+		return Result.createBySuccess("查询成功",labelService.findById(id));
 	}
 
 	/**
@@ -48,7 +52,7 @@ public class LabelController {
 	@RequestMapping(method = RequestMethod.POST)
 	public Result add(@RequestBody Label label){
 		labelService.add(label);
-		return new Result(true,StatusCode.OK,"添加成功");
+		return Result.createBySuccessMsg("添加成功");
 	}
 
 	/**
@@ -61,7 +65,7 @@ public class LabelController {
 	public Result update(@PathVariable String id,@RequestBody Label label){
 		label.setId(id);
 		labelService.update(label);
-		return new Result(true,StatusCode.OK,"更新成功");
+		return Result.createBySuccessMsg("更新成功");
 	}
 
 	/**
@@ -72,7 +76,26 @@ public class LabelController {
 	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
 	public Result delById(@PathVariable String id){
 		labelService.deleteById(id);
-		return new Result(true,StatusCode.OK,"删除成功");
+		return Result.createBySuccessMsg("删除成功");
 	}
 
+	/**
+	 * 根据条件查询结果
+	 * @param searchMap
+	 * @return
+	 */
+	@RequestMapping(value = "/search",method = RequestMethod.POST)
+	public Result findBySearchCondition(@RequestBody Map<String,Object> searchMap){
+		return Result.createBySuccess("查询成功",labelService.findBySearchCondition(searchMap));
+	}
+
+	/**
+	 * 分页查询结果
+	 * @return
+	 */
+	@RequestMapping(value = "/search/{page}/{size}")
+	public Result findBySearchCondition(@RequestBody Map<String,Object> searchaMap,@PathVariable int page,@PathVariable int size){
+		Page pageList = labelService.findBySearchConditionPage(searchaMap,page,size);
+		return Result.createBySuccess("分页查询成功",new PageResult<>(pageList.getTotalElements(),pageList.getContent()));
+	}
 }
