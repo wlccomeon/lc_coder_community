@@ -3,6 +3,7 @@ package com.lc.cc.base.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * 标签实体
@@ -10,20 +11,30 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tb_label")
-public class Label {
+public class Label implements Serializable {
 
 	@Id
 	private String id;
 	/**标签名称*/
 	private String labelname;
+	/**标签名称常量*/
+	public static final String LABEL_NAME = "labelname";
 	/**状态*/
 	private String state;
+	/**状态常量*/
+	public static final String STATE = "state";
 	/**使用数量*/
 	private Long count;
+	/**使用数量常量*/
+	public static final String COUNT="count";
 	/**关注数*/
 	private Long fans;
+	/**关注数常量*/
+	public static final String FANS="fans";
 	/**是否推荐*/
 	private String recommend;
+	/**是否推荐常量*/
+	public static final String RECOMMEND="recommend";
 
 
 	public String getId() {
