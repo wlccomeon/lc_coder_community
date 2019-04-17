@@ -4,7 +4,6 @@ import com.lc.cc.base.entity.Label;
 import com.lc.cc.base.service.LabelService;
 import com.lc.entity.PageResult;
 import com.lc.entity.Result;
-import com.lc.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -93,7 +92,7 @@ public class LabelController {
 	 * 分页查询结果
 	 * @return
 	 */
-	@RequestMapping(value = "/search/{page}/{size}")
+	@RequestMapping(value = "/search/{page}/{size}",method = RequestMethod.POST)
 	public Result findBySearchCondition(@RequestBody Map<String,Object> searchaMap,@PathVariable int page,@PathVariable int size){
 		Page pageList = labelService.findBySearchConditionPage(searchaMap,page,size);
 		return Result.createBySuccess("分页查询成功",new PageResult<>(pageList.getTotalElements(),pageList.getContent()));

@@ -44,8 +44,8 @@ public class Result {
 	}
 
 	/**
-	 * 操作成功，带自定义message
-	 * @param msg
+	 * 操作成功
+	 * @param msg 自定义操作成功消息
 	 * @return
 	 */
 	public static Result createBySuccessMsg(String msg){
@@ -54,8 +54,8 @@ public class Result {
 
 	/**
 	 * 操作成功，带自定义message和返回的数据
-	 * @param msg
-	 * @param data
+	 * @param msg 自定义操作成功消息
+	 * @param data 操作成功返回数据
 	 * @return
 	 */
 	public static Result createBySuccess(String msg,Object data){
@@ -64,13 +64,39 @@ public class Result {
 
 	/**
 	 * 操作成功，带返回的数据
-	 * @param data
+	 * @param data 返回成功携带的数据
 	 * @return
 	 */
 	public static Result createBySuccess(Object data){
 		return new Result(true,StatusCode.OK,"操作成功",data);
 	}
 
+	/**
+	 * 操作失败，系统默认
+	 * @return
+	 */
+	public static Result createByError(){
+		return new Result(false,StatusCode.ERROR,"出错啦");
+	}
+
+	/**
+	 * 操作失败
+	 * @param errMsg 传入的错误提示
+	 * @return
+	 */
+	public static Result createByError(String errMsg){
+		return new Result(false,StatusCode.ERROR,errMsg);
+	}
+
+	/**
+	 * 操作失败
+	 * @param code   传入的错误code
+	 * @param errMsg 传入的错误消息
+	 * @return
+	 */
+	public static Result createByError(int code,String errMsg){
+		return new Result(false,code,errMsg);
+	}
 
 	public boolean isFlag() {
 		return flag;
