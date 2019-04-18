@@ -24,6 +24,7 @@ import com.lc.util.IdWorker;
 
 import com.cc.article.dao.ArticleDao;
 import com.cc.article.pojo.Article;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 服务层
@@ -175,4 +176,22 @@ public class ArticleService {
 
 	}
 
+	/**
+	 * 文章审核
+	 * @param articleId
+	 */
+	@Transactional(rollbackFor = Exception.class)
+	public void articleAudit(String articleId){
+		articleDao.articleAudit(articleId);
+	}
+
+	/**
+	 * 增加点赞数
+	 * @param article
+	 * @return
+	 */
+	@Transactional(rollbackFor = Exception.class)
+	public int addThumbsUp(String article){
+		return articleDao.addThumbsup(article);
+	}
 }

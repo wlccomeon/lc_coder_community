@@ -99,5 +99,27 @@ public class ArticleController {
 		articleService.deleteById(id);
 		return Result.createBySuccessMsg("删除成功");
 	}
+
+	/**
+	 * 文章审核
+	 * @param id 待审核文章的id
+	 * @return
+	 */
+	@RequestMapping(value = "/examine/{id}",method = RequestMethod.PUT)
+	public Result articleAudit(@PathVariable String id){
+		articleService.articleAudit(id);
+		return Result.createBySuccessMsg("审核成功");
+	}
+
+	/**
+	 * 为文章添加点赞数量
+	 * @param id 点赞的文章id
+	 * @return
+	 */
+	@RequestMapping(value = "/thumbup/{id}",method = RequestMethod.PUT)
+	public Result addThumbsup(@PathVariable String id){
+		articleService.addThumbsUp(id);
+		return Result.createBySuccessMsg("点赞成功");
+	}
 	
 }
