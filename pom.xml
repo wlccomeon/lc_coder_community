@@ -10,6 +10,7 @@
     <modules>
         <module>cc_common</module>
         <module>cc_base</module>
+        <module>cc_recruit</module>
     </modules>
     <packaging>pom</packaging>
     <description>lc的程序员社区-父工程</description>
@@ -40,8 +41,20 @@
         </dependency>
     </dependencies>
 
-    <!--下面两个仓库是spring官方推荐的，下载插件和spring全家桶用的 -->
     <repositories>
+        <!--自己搭建的伺服-->
+<!--        <repository>-->
+<!--            <id>nexus</id>-->
+<!--            <name>nexus</name>-->
+<!--            <url>http://192.168.20.138:8081/nexus/content/groups/public/</url>-->
+<!--            <releases>-->
+<!--                <enabled>true</enabled>-->
+<!--            </releases>-->
+<!--            <snapshots>-->
+<!--                <enabled>true</enabled>-->
+<!--            </snapshots>-->
+<!--        </repository>-->
+        <!--下面两个仓库是spring官方推荐的，下载插件和spring全家桶用的-->
         <repository>
             <id>spring-snapshots</id>
             <name>Spring Snapshots</name>
@@ -61,6 +74,19 @@
     </repositories>
 
     <pluginRepositories>
+        <!--自己搭建的伺服插件库-->
+<!--        <pluginRepository>-->
+<!--            <id>nexus</id>-->
+<!--            <name>nexus</name>-->
+<!--            <url>http://192.168.20.138:8081/nexus/content/groups/public/</url>-->
+<!--            <releases>-->
+<!--                <enabled>true</enabled>-->
+<!--            </releases>-->
+<!--            <snapshots>-->
+<!--                <enabled>true</enabled>-->
+<!--            </snapshots>-->
+<!--        </pluginRepository>-->
+        <!--spring官方插件库-->
         <pluginRepository>
             <id>spring-snapshots</id>
             <name>Spring Snapshots</name>
@@ -86,4 +112,17 @@
         <java.version>1.8</java.version>
     </properties>
 
+    <!--配置maven伺服-->
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>maven-releases</id>-->
+<!--            <name>Nexus Release Repository</name>-->
+<!--            <url>http://192.168.20.138:8081/repository/maven-releases/</url>-->
+<!--        </repository>-->
+<!--        <snapshotRepository>-->
+<!--            <id>maven-snapshots</id>-->
+<!--            <name>Nexus Snapshot Repository</name>-->
+<!--            <url>http://192.168.20.138:8081/repository/maven-snapshots/</url>-->
+<!--        </snapshotRepository>-->
+<!--    </distributionManagement>-->
 </project>
