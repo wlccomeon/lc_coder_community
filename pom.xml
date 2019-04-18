@@ -11,6 +11,7 @@
         <module>cc_common</module>
         <module>cc_base</module>
         <module>cc_recruit</module>
+        <module>cc_qa</module>
     </modules>
     <packaging>pom</packaging>
     <description>lc的程序员社区-父工程</description>
