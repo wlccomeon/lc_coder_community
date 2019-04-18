@@ -1,0 +1,13 @@
+server: 
+  port: 9004
+spring: 
+  application:  
+    name: cc-article #指定服务名
+  datasource:  
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.20.138:3306/cc_article?useUnicode=true&amp;characterEncoding=UTF8
+    username: root
+    password: 123456
+  jpa: 
+    database: MySQL
+    show-sql: true
