@@ -99,5 +99,23 @@ public class RecruitController {
 		recruitService.deleteById(id);
 		return Result.createBySuccessMsg("删除成功");
 	}
-	
+
+	/**
+	 * 查询状态为2并以创建日期降序排序，查询前4条记录:推荐记录。代码写的low。。
+	 * @return
+	 */
+	@RequestMapping(value = "/search/recommend",method = RequestMethod.GET)
+	public Result recommend(){
+		List<Recruit> recruits = recruitService.findTop4ByStateOrderByCreatetimeDesc("2");
+		return Result.createBySuccess("查询成功",recruits);
+	}
+
+	/**
+	 * 查询最新职位：需求分析：查询状态不为0并以创建日期降序排序，查询前12条记录
+	 * @return
+	 */
+	@RequestMapping(value = "/search/newlist",method = RequestMethod.GET)
+	public Result newList(){
+		return Result.createBySuccess(recruitService.findNewList("0"));
+	}
 }
