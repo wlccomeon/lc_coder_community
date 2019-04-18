@@ -9,9 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>cc_common</module>
-        <module>cc_base</module>
+        <module>cc_label</module>
         <module>cc_recruit</module>
         <module>cc_qa</module>
+        <module>cc_article</module>
     </modules>
     <packaging>pom</packaging>
     <description>lc的程序员社区-父工程</description>

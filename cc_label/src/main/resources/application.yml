@@ -4,7 +4,7 @@ server:
 #springcloud要求微服务的应用名称必须是-，不能使用_
 spring:
   application:
-    name: cc-base
+    name: cc-label
   #设置jdbc相关配置
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
