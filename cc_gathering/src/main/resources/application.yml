@@ -1,0 +1,15 @@
+server: 
+  port: 9005
+spring: 
+  application:  
+    name: cc-gathering #指定服务名
+  datasource:  
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.20.138:3306/cc_gathering?characterEncoding=UTF8
+    username: root
+    password: 123456
+  jpa: 
+    database: MySQL
+    show-sql: true
+  redis:
+    host: 192.168.20.138:6379
