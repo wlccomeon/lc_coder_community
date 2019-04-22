@@ -20,7 +20,7 @@ public interface ProblemDao extends JpaRepository<Problem,String>,JpaSpecificati
 	 * @param labelId 标签id
 	 * @return
 	 */
-	@Query(value = "SELECT * FROM tb_pl p1 ,tb_problem p2 WHERE p1.`problemid`=p2.`id` AND p1.`labelid`=? ORDER BY p2.`replytime` DESC;",nativeQuery = true)
+	@Query(value = "SELECT * FROM tb_pl p1 ,tb_problem p2 WHERE p1.`problemid`=p2.`id` AND p1.`labelid`=? ORDER BY p2.`replytime` DESC ",nativeQuery = true)
 	Page<Problem> findNewListByLableId(String labelId, Pageable pageable);
 
 	/**
@@ -28,7 +28,7 @@ public interface ProblemDao extends JpaRepository<Problem,String>,JpaSpecificati
 	 * @param labelId 标签id
 	 * @return
 	 */
-	@Query(value = "SELECT * FROM tb_pl p1 ,tb_problem p2 WHERE p1.`problemid`=p2.`id` AND p1.`labelid`=? ORDER BY p2.`reply` DESC;",nativeQuery = true)
+	@Query(value = "SELECT * FROM tb_pl p1 ,tb_problem p2 WHERE p1.`problemid`=p2.`id` AND p1.`labelid`=? ORDER BY p2.`reply` DESC ",nativeQuery = true)
 	Page<Problem> findHotListByLabelId(String labelId,Pageable pageable);
 
 	/**
@@ -36,7 +36,7 @@ public interface ProblemDao extends JpaRepository<Problem,String>,JpaSpecificati
 	 * @param labelId 标签id
 	 * @return
 	 */
-	@Query(value = "SELECT * FROM tb_pl p1 ,tb_problem p2 WHERE p1.`problemid`=p2.`id` AND p1.`labelid`=? AND p2.`reply`=0 ORDER BY p2.`createtime` DESC;",nativeQuery = true)
+	@Query(value = "SELECT * FROM tb_pl p1 ,tb_problem p2 WHERE p1.`problemid`=p2.`id` AND p1.`labelid`=? AND p2.`reply`=0 ORDER BY p2.`createtime` DESC ",nativeQuery = true)
 	Page<Problem> findWaitListByLabelId(String labelId,Pageable pageable);
 
 }

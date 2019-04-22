@@ -12,11 +12,13 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Selection;
 
+import com.cc.article.constant.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
 
@@ -40,6 +42,9 @@ public class ArticleService {
 	
 	@Autowired
 	private IdWorker idWorker;
+
+	@Autowired
+	private RedisTemplate redisTemplate;
 
 	/**
 	 * 查询全部列表
@@ -80,7 +85,14 @@ public class ArticleService {
 	 * @return
 	 */
 	public Article findById(String id) {
-		return articleDao.findById(id).get();
+		//从缓存中提取
+		Article article = (Article)redisTemplate.opsForValue().get(Constants.RedisKey.ARTICLE_KEY +id);
+		if (article==null){
+			article = articleDao.findById(id).get();
+			//不存在则存入缓存
+			redisTemplate.opsForValue().set(Constants.RedisKey.ARTICLE_KEY +id,article);
+		}
+		return article;
 	}
 
 	/**
@@ -97,6 +109,8 @@ public class ArticleService {
 	 * @param article
 	 */
 	public void update(Article article) {
+		//删除缓存
+		redisTemplate.delete(Constants.RedisKey.ARTICLE_KEY+article.getId());
 		articleDao.save(article);
 	}
 
@@ -105,6 +119,8 @@ public class ArticleService {
 	 * @param id
 	 */
 	public void deleteById(String id) {
+		//删除缓存
+		redisTemplate.delete(Constants.RedisKey.ARTICLE_KEY+id);
 		articleDao.deleteById(id);
 	}
 
