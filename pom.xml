@@ -14,6 +14,7 @@
         <module>cc_qa</module>
         <module>cc_article</module>
         <module>cc_gathering</module>
+        <module>cc_spit</module>
     </modules>
     <packaging>pom</packaging>
     <description>lc的程序员社区-父工程</description>
