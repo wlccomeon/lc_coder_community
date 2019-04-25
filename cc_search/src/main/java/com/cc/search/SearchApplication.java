@@ -1,4 +1,4 @@
-package com.lc.cc.base;
+package com.cc.search;
 
 import com.lc.util.IdWorker;
 import org.springframework.boot.SpringApplication;
@@ -6,20 +6,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 /**
- * springboot启动器
+ * 搜索微服务
  * @author wlc
  */
 @SpringBootApplication
-public class BaseApplication {
+public class SearchApplication {
 
-	public static void main(String[] args){
-		SpringApplication.run(BaseApplication.class,args);
+	public static void main(String[] args) {
+		SpringApplication.run(SearchApplication.class,args);
 	}
 
-	/**将bean纳入spring管理*/
 	@Bean
 	public IdWorker idWorker(){
 		return new IdWorker(1,1);
 	}
-
 }
