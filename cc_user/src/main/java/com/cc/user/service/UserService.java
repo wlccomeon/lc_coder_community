@@ -18,6 +18,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
 
@@ -45,6 +46,25 @@ public class UserService {
 	private RabbitTemplate rabbitTemplate;
 	@Autowired
 	private RedisTemplate redisTemplate;
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+
+	/**
+	 * 根据手机号和密码进行登录
+	 * @param mobile 手机号
+	 * @param pwd 密码
+	 * @return
+	 */
+	public User findByMobileAndPwd(String mobile,String pwd){
+		User user = userDao.findByMobile(mobile);
+		if (user!=null){
+			//第一个参数为页面输入的密码，第2个为数据库中加密过的密码
+			if (encoder.matches(pwd,user.getPassword())){
+				return user;
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * 发送短信验证码
@@ -130,7 +150,7 @@ public class UserService {
 				throw new RuntimeException("验证码不正确");
 			}
 		}else{
-			throw new RuntimeException("验证码为空");
+			throw new RuntimeException("验证码不存在");
 		}
 		//2.添加用户
 		user.setId(idWorker.nextId()+"");
@@ -146,6 +166,11 @@ public class UserService {
 		user.setUpdatedate(new Date());
 		//最后登录日期
 		user.setLastdate(new Date());
+
+		//为密码加密
+		String newPwd = encoder.encode(user.getPassword());
+		user.setPassword(newPwd);
+
 		userDao.save(user);
 	}
 

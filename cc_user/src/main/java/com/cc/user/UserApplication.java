@@ -3,6 +3,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import com.lc.util.IdWorker;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * 用户微服务启动类
@@ -19,5 +20,13 @@ public class UserApplication {
 	public IdWorker idWorkker(){
 		return new IdWorker(1, 1);
 	}
-	
+
+	/**
+	 * 使用springsecurity的加密工具进行密码加密
+	 * @return
+	 */
+	@Bean
+	public BCryptPasswordEncoder bCryptPasswordEncoder(){
+		return new BCryptPasswordEncoder();
+	}
 }

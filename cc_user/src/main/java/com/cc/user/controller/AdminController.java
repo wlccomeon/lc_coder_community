@@ -2,6 +2,7 @@ package com.cc.user.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.lc.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,21 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adminService;
-	
+
+	/**
+	 * 登录
+	 * @return
+	 */
+	@PostMapping(value = "/login")
+	public Result login(@RequestBody Map<String,String> loginMap){
+		Admin admin = adminService.findByLoginnameAndPwd(loginMap.get("loginname"),loginMap.get("password"));
+		if (admin!=null){
+			return Result.createBySuccessMsg("登录成功");
+		}else{
+			return Result.createByError(StatusCode.LOGINERROR,"用户名或密码错误");
+		}
+
+	}
 	
 	/**
 	 * 查询全部数据

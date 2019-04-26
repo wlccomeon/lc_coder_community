@@ -10,5 +10,12 @@ import com.cc.user.pojo.User;
  *
  */
 public interface UserDao extends JpaRepository<User,String>,JpaSpecificationExecutor<User>{
-	
+
+	/**
+	 * 根据手机号查找用户信息
+	 * @param mobile
+	 * @return
+	 */
+	User findByMobile(String mobile);
+
 }

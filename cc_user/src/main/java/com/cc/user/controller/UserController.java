@@ -2,6 +2,7 @@ package com.cc.user.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.lc.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,23 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
+	/**
+	 * 登录
+	 * @param mobile    手机号
+	 * @param password  密码
+	 * @return
+	 */
+	@PostMapping(value = "/login")
+	public Result loginByMobile(@RequestParam(value = "mobile") String mobile,@RequestParam(value = "password") String password){
+
+		User user = userService.findByMobileAndPwd(mobile,password);
+		if (user!=null){
+			return Result.createBySuccessMsg("登录成功");
+		}else{
+			return Result.createByError(StatusCode.LOGINERROR,"手机号或密码错误");
+		}
+	}
 
 	/**
 	 * 发送短信验证码
