@@ -29,7 +29,7 @@ public class UserController {
 	 * 发送短信验证码
 	 * @return
 	 */
-	@RequestMapping(value = "/sendsms/{mobile}",method = RequestMethod.POST)
+	@PostMapping(value = "/sendsms/{mobile}")
 	public Result sendSms(@PathVariable String mobile){
 		userService.sendSMSCode(mobile);
 		return Result.createBySuccessMsg("发送成功");
@@ -107,6 +107,16 @@ public class UserController {
 	public Result delete(@PathVariable String id ){
 		userService.deleteById(id);
 		return Result.createBySuccessMsg("删除成功");
+	}
+
+	/**
+	 * 用户注册
+	 * @return
+	 */
+	@PostMapping(value = "/register/{code}")
+	public Result register(@RequestBody User user,@PathVariable String code){
+		userService.add(user,code);
+		return Result.createBySuccessMsg("注册成功");
 	}
 	
 }

@@ -124,7 +124,7 @@ public class UserService {
 	 */
 	public void add(User user,String code){
 		//1.验证验证码是否正确
-		String redisCode = (String)redisTemplate.opsForValue().get("smscode_"+user.getMobile());
+		String redisCode = (String)redisTemplate.opsForValue().get("sms_code_"+user.getMobile());
 		if (StringUtils.isNotBlank(redisCode)){
 			if (!StringUtils.equals(code,redisCode)){
 				throw new RuntimeException("验证码不正确");
