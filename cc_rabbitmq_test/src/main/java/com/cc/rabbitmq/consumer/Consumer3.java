@@ -4,17 +4,13 @@ import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
-/**
- * rabbitmq消费者
- * @author wlc
- */
-@RabbitListener(queues = "cc_queue")
 @Component
-public class Consumer {
+@RabbitListener(queues = "cc_queue3")
+public class Consumer3 {
 
 	@RabbitHandler
 	private void consumeMsg(String msg){
-		System.out.println("接收到cc_queue消息："+msg);
+		System.out.println("接收到cc_queue3消息："+msg);
 	}
 
 }

@@ -1,0 +1,18 @@
+server: 
+  port: 9008
+spring: 
+  application:  
+    name: cc-user #指定服务名
+  datasource:  
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.20.138:3306/cc_user?characterEncoding=UTF8
+    username: root
+    password: 123456
+  jpa: 
+    database: MySQL
+    show-sql: true
+  #使用默认的端口号，则只需要添加ip即可。
+  redis:
+    host: 192.168.20.138
+  rabbitmq:
+    host: 192.168.20.138
