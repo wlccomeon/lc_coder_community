@@ -1,0 +1,20 @@
+server:
+  port: 9009
+spring:
+  application:
+    #这个名称其实可以不写，因为没有其他微服务要调用它，这里只是监听和消费而已
+    name: cc-sendmsg
+  rabbitmq:
+    host: 192.168.20.138
+  #mysql的配置必须加上，数据库随便写，不加就起不来。。。。
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.20.138:3306/cc_article?characterEncoding=UTF8
+    username: root
+    password: 123456
+aliyun:
+  sms:
+    accessKeyId: 相信你懂得，自己的阿里云控制台
+    accessKeySecret: 相信你懂得，自己的阿里云控制台
+    template_code: 阿里短信服务那里申请即可
+    sign_name: 阿里短信服务那里申请即可

@@ -18,6 +18,7 @@
         <module>cc_search</module>
         <module>cc_rabbitmq_test</module>
         <module>cc_user</module>
+        <module>cc_sendmsg</module>
     </modules>
     <packaging>pom</packaging>
     <description>lc的程序员社区-父工程</description>
