@@ -3,6 +3,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import com.lc.util.IdWorker;
 
@@ -13,6 +14,7 @@ import com.lc.util.IdWorker;
  */
 @EnableCaching
 @SpringBootApplication
+@EnableEurekaClient
 public class GatheringApplication {
 
 	public static void main(String[] args) {

@@ -3,6 +3,7 @@ package com.lc.cc.base;
 import com.lc.util.IdWorker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
 /**
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Bean;
  * @author wlc
  */
 @SpringBootApplication
+@EnableEurekaClient
 public class LabelApplication {
 
 	public static void main(String[] args){

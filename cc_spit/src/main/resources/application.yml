@@ -15,3 +15,9 @@ spring:
     url: jdbc:mysql://192.168.20.138:3306/cc_article?characterEncoding=UTF8
     username: root
     password: 123456
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6868/eureka
+  instance:
+    prefer-ip-address: true

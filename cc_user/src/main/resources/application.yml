@@ -16,3 +16,9 @@ spring:
     host: 192.168.20.138
   rabbitmq:
     host: 192.168.20.138
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6868/eureka
+  instance:
+    prefer-ip-address: true

@@ -1,0 +1,19 @@
+server:
+  port: 6868 #服务端口
+spring:
+  application:
+    name: cc-eureka #指定服务名
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.20.138:3306/cc_article?characterEncoding=UTF8
+    username: root
+    password: 123456
+eurake:
+  client:
+    #是否将自己注册到eureka服务中，本身就是，所以无需注册
+    registerWithEureka: false
+    # 是否从eureka中获取注册信息
+    fetchRegistry: false
+    # Eureka客户端与服务端交互的地址
+    serviceUrl:
+      defaultZone: http://127.0.0.1:${server.port}/eureka/
