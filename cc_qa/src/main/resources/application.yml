@@ -17,6 +17,7 @@ eureka:
       defaultZone: http://localhost:6868/eureka
   instance:
     prefer-ip-address: true
+#打开熔断器
 feign:
   hystrix:
     enabled: true

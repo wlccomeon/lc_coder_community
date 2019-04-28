@@ -1,0 +1,42 @@
+server:
+  port: 9010
+spring:
+  application:
+    name: cc-manage #zuul网关治理
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.20.138:3306/cc_qa?characterEncoding=UTF8
+    username: root
+    password: 123456
+eureka:
+  client:
+    service-url:  #eureka服务端与客户端交互地址url
+      defaultZone: http://127.0.0.1:6868/eureka/
+    instance:
+      prefer-ip-address: true
+zuul:
+  routes:
+    cc-gathering: #活动微服务
+      path: /gathering/** #配置请求url的请求规则
+      serviceId: cc-gathering #指定eureka注册中心中的服务id
+    cc-article:
+      path: /article/**
+      serviceId: cc-article
+    cc-label:
+      path: /label/**
+      serviceId: cc-label
+    cc-qa:
+      path: /qa/**
+      serviceId: cc-qa
+    cc-recruit:
+      path: /recruit/**
+      serviceId: cc-recruit
+    cc-spit:
+      path: /spit/**
+      serviceId: cc-spit
+    cc-user:
+      path: /user/**
+      serviceId: cc-user
+    cc-search:
+      path: /search/**
+      serviceId: cc-search
