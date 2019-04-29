@@ -22,6 +22,7 @@
         <module>cc_eureka</module>
         <module>cc_manage</module>
         <module>cc_web</module>
+        <module>cc_config</module>
     </modules>
     <packaging>pom</packaging>
     <description>lc的程序员社区-父工程</description>

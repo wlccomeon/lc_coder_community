@@ -1,0 +1,29 @@
+spring:
+  rabbitmq:
+    host: 192.168.20.138
+  application:
+    name: cc-config
+  cloud:
+    config:
+      server:
+        git:
+          #码云上自己的配置文件地址
+          uri: https://gitee.com/sky_lc/cc-config.git
+          #如果是私有的，需要用户名和密码
+          username: wlccomeon@163.com
+          #密码
+          password: 637735wlc
+  #以下mysql的配置没有意义，只是为了启动不报错。。
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.20.138:3306/cc_article?characterEncoding=UTF8
+    username: root
+    password: 123456
+server:
+  port: 9012
+#暴露触发消息总线的地址
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh

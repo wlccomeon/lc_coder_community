@@ -5,6 +5,8 @@ import com.lc.cc.base.service.LabelService;
 import com.lc.entity.PageResult;
 import com.lc.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,15 +16,30 @@ import java.util.Map;
 /**
  * 标签Controller，测试
  * @CrossOrigin：允许跨域访问
+ * @RefreshScope: 允许动态刷新获取配置文件中自定义的key-value
  * @author wlc
  */
 @RestController
 @CrossOrigin
 @RequestMapping(value = "/label")
+@RefreshScope
 public class LabelController {
 
 	@Autowired
 	private LabelService labelService;
+
+	@Value("${test.ip}")
+	private String ip;
+
+	/**
+	 * 测试获取自定义的key-value
+	 * @return
+	 */
+	@GetMapping(value = "/getIp")
+	public Result testGetCustomizeKey(){
+		System.out.println("ip:"+ip);
+		return null;
+	}
 
 	/**
 	 * 查询所有标签

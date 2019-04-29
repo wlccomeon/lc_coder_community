@@ -1,0 +1,13 @@
+#bootstrap.yml也是springboot内置约定的配置文件，优先级高于application.yml。
+#这个文件中的配置应该属于系统级别的配置，改动不频繁的情况。
+spring:
+  cloud:
+    config:
+      #gitee中配置文件"-"前的名字
+      name: qa
+      #gitee中配置文件"-"后的名字
+      profile: dev
+      #分支名称
+      label: master
+      #配置微服务的访问url
+      uri: http://127.0.0.1:9012
