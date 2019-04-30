@@ -10,9 +10,9 @@ spring:
           #码云上自己的配置文件地址
           uri: https://gitee.com/sky_lc/cc-config.git
           #如果是私有的，需要用户名和密码
-          username: wlccomeon@163.com
+          username: 你的码云用户名
           #密码
-          password: 637735wlc
+          password: 你的码云密码
   #以下mysql的配置没有意义，只是为了启动不报错。。
   datasource:
     driverClassName: com.mysql.jdbc.Driver
