@@ -23,6 +23,8 @@
         <module>cc_manage</module>
         <module>cc_web</module>
         <module>cc_config</module>
+        <module>cc_test</module>
+        <module>cc_durid_monitor</module>
     </modules>
     <packaging>pom</packaging>
     <description>lc的程序员社区-父工程</description>
